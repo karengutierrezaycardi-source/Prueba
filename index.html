@@ -3,317 +3,365 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multi-Calculadora de Créditos Colombia (V2.0)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-        }
-        body {
-            background-color: #0f172a;
-            color: #f1f5f9;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            background: #1e293b;
-            padding: 35px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            border: 1px solid #334155;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 35px;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 25px;
-        }
-        h1 { color: #38bdf8; font-size: 28px; margin-bottom: 8px; }
-        p.subtitle { color: #94a3b8; font-size: 14px; }
-        .badge {
-            background: #0284c7;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 600;
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 35px;
-        }
-        @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
-        .form-group {
-            margin-bottom: 22px;
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: #94a3b8;
-            font-size: 14px;
-        }
-        input, select {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1px solid #475569;
-            border-radius: 8px;
-            font-size: 15px;
-            background-color: #0f172a;
-            color: white;
-            transition: all 0.3s;
-        }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #38bdf8;
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
-        }
-        .results-box {
-            background-color: #0f172a;
-            border-radius: 12px;
-            padding: 25px;
-            border-top: 4px solid #38bdf8;
-        }
-        .result-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 14px 0;
-            border-bottom: 1px solid #334155;
-        }
-        .result-item:last-child { border-bottom: none; }
-        .result-label { font-weight: 500; color: #94a3b8; }
-        .result-value { font-weight: 700; color: #f8fafc; font-size: 18px; }
-        .highlight { color: #34d399; font-size: 22px; }
-        .info-card {
-            background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            font-size: 13px;
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-        .tabs-container {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
-            background: #0f172a;
-            padding: 6px;
-            border-radius: 8px;
-        }
-        .tab-btn {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #94a3b8;
-            padding: 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.2s;
-        }
-        .tab-btn.active {
-            background: #38bdf8;
-            color: #0f172a;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>Simulador Multicrédito Colombiano <span class="badge">V2.0 PRO</span></h1>
-            <p class="subtitle">Simulación avanzada: Vivienda, Vehículo, Consumo y Tarjetas con tasas de usura y seguros estimados</p>
-        </header>
+    <title>Inmobiliaria Puerta de Oro | Barranquilla</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        <div class="tabs-container">
-            <button class="tab-btn active" onclick="cambiarTipo('hipotecario')">🏠 Hipotecario / Leasing</button>
-            <button class="tab-btn" onclick="cambiarTipo('vehiculo')">🚗 Vehículo</button>
-            <button class="tab-btn" onclick="cambiarTipo('libre')">💰 Libre Inversión</button>
-            <button class="tab-btn" onclick="cambiarTipo('tarjeta')">💳 Tarjeta de Crédito</button>
+    <!-- Tailwind CSS vía CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        ocean: {
+                            500: '#0077b6',
+                            800: '#023e8a',
+                            900: '#03045e',
+                        },
+                        tropical: {
+                            400: '#ffb703',
+                            500: '#fb8500',
+                        }
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to right bottom, rgba(2, 62, 138, 0.8), rgba(251, 133, 0, 0.6)), url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2075&q=80')"
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50 antialiased">
+
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <i class="fa-solid fa-house-chimney-window text-3xl text-tropical-500 mr-2"></i>
+                    <span class="font-bold text-2xl text-ocean-900 tracking-tight">PuertaDeOro<span class="text-tropical-500">.</span></span>
+                </div>
+                
+                <!-- Menú de Navegación (Desktop) -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="text-ocean-900 font-medium hover:text-tropical-500 transition-colors">Inicio</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-tropical-500 transition-colors">Comprar</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-tropical-500 transition-colors">Alquilar</a>
+                    <a href="#" class="text-gray-600 font-medium hover:text-tropical-500 transition-colors">Contacto</a>
+                </nav>
+
+                <!-- Botón de Llamado a la Acción -->
+                <div class="hidden md:flex items-center">
+                    <a href="#" class="bg-ocean-800 text-white px-6 py-2 rounded-full font-semibold hover:bg-ocean-900 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-plus mr-2"></i>Publicar inmueble
+                    </a>
+                </div>
+
+                <!-- Menú Hamburguesa (Mobile) -->
+                <div class="md:hidden flex items-center">
+                    <button class="text-ocean-900 hover:text-tropical-500 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="relative bg-hero-pattern bg-cover bg-center bg-no-repeat min-h-[600px] flex items-center justify-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
+            
+            <!-- Textos del Hero -->
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 leading-tight drop-shadow-lg">
+                Encuentra tu lugar ideal en <br class="hidden md:block"/> <span class="text-tropical-400">Barranquilla</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-100 mb-10 drop-shadow-md max-w-2xl mx-auto">
+                La agencia inmobiliaria más exclusiva del Caribe colombiano. Comienza tu nueva vida con espacios diseñados para ti.
+            </p>
+
+            <!-- Formulario de Búsqueda Rápida -->
+            <div class="bg-white rounded-xl shadow-2xl p-4 md:p-6 max-w-4xl mx-auto transform translate-y-4">
+                <form class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    
+                    <!-- Filtro: Operación -->
+                    <div class="text-left">
+                        <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Operación</label>
+                        <select class="w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-tropical-500 focus:border-transparent">
+                            <option>Comprar</option>
+                            <option>Arrendar</option>
+                        </select>
+                    </div>
+
+                    <!-- Filtro: Tipo de Inmueble -->
+                    <div class="text-left">
+                        <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Tipo de inmueble</label>
+                        <select class="w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-tropical-500 focus:border-transparent">
+                            <option>Apartamento</option>
+                            <option>Casa</option>
+                            <option>Local Comercial</option>
+                            <option>Lote</option>
+                        </select>
+                    </div>
+
+                    <!-- Filtro: Barrio -->
+                    <div class="text-left">
+                        <label class="block text-xs font-semibold text-gray-500 uppercase mb-1">Barrio</label>
+                        <select class="w-full bg-gray-50 border border-gray-200 text-gray-700 py-3 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-tropical-500 focus:border-transparent">
+                            <option>Todos</option>
+                            <option>El Prado</option>
+                            <option>Alto Prado</option>
+                            <option>Buenavista</option>
+                            <option>Villa Campestre</option>
+                        </select>
+                    </div>
+
+                    <!-- Botón de Búsqueda -->
+                    <div class="flex items-end">
+                        <button type="button" class="w-full bg-tropical-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-tropical-400 transition-colors shadow-md">
+                            <i class="fa-solid fa-magnifying-glass mr-2"></i> Buscar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROPIEDADES DESTACADAS ================= -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-ocean-900 mb-4">Propiedades Exclusivas</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Descubre las mejores opciones de vivienda y negocios en los sectores más prestigiosos de Barranquilla.</p>
+            </div>
+
+            <!-- Grid de Inmuebles -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Tarjeta 1: Alto Prado -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Apartamento en Alto Prado" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-ocean-800 text-white text-xs font-bold px-3 py-1 rounded-full">Venta</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Apartamento Moderno</h3>
+                            <span class="text-tropical-500 font-bold text-xl">$850M</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4"><i class="fa-solid fa-location-dot text-ocean-500 mr-1"></i> Alto Prado, Barranquilla</p>
+                        
+                        <div class="flex justify-between border-t border-b border-gray-100 py-3 my-4">
+                            <div class="text-center">
+                                <i class="fa-solid fa-bed text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">3 Hab</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-bath text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">3 Baños</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-vector-square text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">120 m²</p>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full text-ocean-800 border-2 border-ocean-800 font-semibold py-2 rounded-lg hover:bg-ocean-800 hover:text-white transition-colors">
+                            Ver más detalles
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2: Buenavista -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Casa en Buenavista" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-tropical-500 text-white text-xs font-bold px-3 py-1 rounded-full">Arriendo</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Casa Familiar Estilo Resort</h3>
+                            <span class="text-tropical-500 font-bold text-xl">$4.5M/mes</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4"><i class="fa-solid fa-location-dot text-ocean-500 mr-1"></i> Buenavista, Barranquilla</p>
+                        
+                        <div class="flex justify-between border-t border-b border-gray-100 py-3 my-4">
+                            <div class="text-center">
+                                <i class="fa-solid fa-bed text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">4 Hab</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-bath text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">5 Baños</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-vector-square text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">250 m²</p>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full text-ocean-800 border-2 border-ocean-800 font-semibold py-2 rounded-lg hover:bg-ocean-800 hover:text-white transition-colors">
+                            Ver más detalles
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3: El Prado -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 group border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse en El Prado" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 bg-ocean-800 text-white text-xs font-bold px-3 py-1 rounded-full">Venta</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Penthouse Clásico</h3>
+                            <span class="text-tropical-500 font-bold text-xl">$1.200M</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4"><i class="fa-solid fa-location-dot text-ocean-500 mr-1"></i> El Prado, Barranquilla</p>
+                        
+                        <div class="flex justify-between border-t border-b border-gray-100 py-3 my-4">
+                            <div class="text-center">
+                                <i class="fa-solid fa-bed text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">3 Hab</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-bath text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">4 Baños</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa-solid fa-vector-square text-gray-400 mb-1"></i>
+                                <p class="text-sm font-semibold text-gray-700">200 m²</p>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full text-ocean-800 border-2 border-ocean-800 font-semibold py-2 rounded-lg hover:bg-ocean-800 hover:text-white transition-colors">
+                            Ver más detalles
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SECCIÓN DE BENEFICIOS ================= -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-ocean-900">¿Por qué elegirnos?</h2>
+                <p class="text-gray-600 mt-4">Nuestra experiencia marca la diferencia en el mercado inmobiliario del Caribe.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                
+                <!-- Beneficio 1 -->
+                <div class="p-6">
+                    <div class="w-20 h-20 mx-auto bg-ocean-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-map-location-dot text-4xl text-ocean-800"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Experiencia Local</h3>
+                    <p class="text-gray-600">Conocemos cada rincón de Barranquilla. Te asesoramos para encontrar la zona que mejor se adapte a tu estilo de vida.</p>
+                </div>
+
+                <!-- Beneficio 2 -->
+                <div class="p-6">
+                    <div class="w-20 h-20 mx-auto bg-tropical-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-shield-halved text-4xl text-tropical-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Trámites Seguros</h3>
+                    <p class="text-gray-600">Garantizamos total transparencia y respaldo jurídico en todas las operaciones de compra, venta o arriendo.</p>
+                </div>
+
+                <!-- Beneficio 3 -->
+                <div class="p-6">
+                    <div class="w-20 h-20 mx-auto bg-ocean-50 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-handshake-angle text-4xl text-ocean-800"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Atención Personalizada</h3>
+                    <p class="text-gray-600">No eres un cliente más, eres nuestro invitado. Acompañamiento VIP desde la primera llamada hasta la entrega de llaves.</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-ocean-900 text-gray-300 py-12 border-t-4 border-tropical-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            
+            <!-- Branding -->
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center mb-4">
+                    <i class="fa-solid fa-house-chimney-window text-2xl text-tropical-500 mr-2"></i>
+                    <span class="font-bold text-xl text-white tracking-tight">PuertaDeOro<span class="text-tropical-500">.</span></span>
+                </div>
+                <p class="text-sm mb-4">Transformando la forma en que vives y haces negocios en Barranquilla.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-facebook text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                </div>
+            </div>
+
+            <!-- Enlaces Rápidos -->
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Enlaces Rápidos</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-tropical-400 transition-colors">Inicio</a></li>
+                    <li><a href="#" class="hover:text-tropical-400 transition-colors">Propiedades en Venta</a></li>
+                    <li><a href="#" class="hover:text-tropical-400 transition-colors">Propiedades en Arriendo</a></li>
+                    <li><a href="#" class="hover:text-tropical-400 transition-colors">Publicar Inmueble</a></li>
+                </ul>
+            </div>
+
+            <!-- Legal -->
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Legal</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-tropical-400 transition-colors">Términos y Condiciones</a></li>
+                    <li><a href="#" class="hover:text-tropical-400 transition-colors">Política de Privacidad</a></li>
+                    <li><a href="#" class="hover:text-tropical-400 transition-colors">Tratamiento de Datos</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div>
+                <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Contacto</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="flex items-start">
+                        <i class="fa-solid fa-location-dot mt-1 mr-3 text-tropical-500"></i>
+                        <span>Cra 51B # 82-25, Piso 4<br>Barranquilla, Colombia</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa-solid fa-phone mr-3 text-tropical-500"></i>
+                        <span>+57 300 123 4567</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa-solid fa-envelope mr-3 text-tropical-500"></i>
+                        <span>hola@puertadeoro.com</span>
+                    </li>
+                </ul>
+            </div>
+            
         </div>
         
-        <div class="grid">
-            <div>
-                <div class="form-group">
-                    <label id="lblMonto" for="montoPrincipal">Monto Total del Crédito / Valor Inmueble ($ COP)</label>
-                    <input type="number" id="montoPrincipal" value="150000000" step="5000000">
-                </div>
-                
-                <div class="form-group" id="divCuotaInicial">
-                    <label for="cuotaInicial">Cuota Inicial ($ COP)</label>
-                    <input type="number" id="cuotaInicial" value="45000000" step="5000000">
-                </div>
-
-                <div class="form-group" id="divAmortizacion">
-                    <label for="tipoSistema">Modalidad de Moneda</label>
-                    <select id="tipoSistema">
-                        <option value="pesos">Pesos Colombianos (Cuota Fija)</option>
-                        <option value="uvr">UVR (Indexado a Inflación / IPC)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="tasaAnual">Tasa de Interés Nominal/Efectiva Propuesta (E.A. %)</label>
-                    <input type="number" id="tasaAnual" value="11.8" step="0.05">
-                </div>
-
-                <div class="form-group">
-                    <label id="lblPlazo" for="plazo">Plazo de Amortización (Meses)</label>
-                    <input type="number" id="plazo" value="180" min="1" max="360">
-                </div>
-
-                <div class="form-group">
-                    <label for="seguroMes">Seguro de Vida Obligatorio + Todo Riesgo Estimado (Mensual $ COP)</label>
-                    <input type="number" id="seguroMes" value="45000" step="5000">
-                </div>
-            </div>
-            
-            <div>
-                <h2 style="font-size: 18px; margin-bottom: 15px; color: #38bdf8;">Análisis Financiero del Escenario</h2>
-                <div class="results-box">
-                    <div class="result-item">
-                        <span class="result-label">Capital Neto a Financiar</span>
-                        <span class="result-value" id="resFinanciar">$ 0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Tasa Periódica Mes Vencido (M.V.)</span>
-                        <span class="result-value" id="resTasaMes">0.00%</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Cuota Base (Solo Capital + Interés)</span>
-                        <span class="result-value" id="resCuotaBase">$ 0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Seguros Mensuales Adicionados</span>
-                        <span class="result-value" id="resSeguro">$ 0</span>
-                    </div>
-                    <div class="result-item" style="background: rgba(52, 211, 153, 0.05); padding: 10px; border-radius: 6px;">
-                        <span class="result-label" style="color: #34d399; font-weight: 600;">CUOTA MENSUAL TOTAL</span>
-                        <span class="result-value highlight" id="resCuotaTotal">$ 0</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="result-label">Costo Total de Intereses Generados</span>
-                        <span class="result-value" id="resIntereses">$ 0</span>
-                    </div>
-                </div>
-                
-                <div class="info-card" id="infoDinamica">
-                    <strong>Análisis del Sistema:</strong> Los créditos hipotecarios en Colombia permiten plazos amplios y tasas competitivas. Recuerde validar si aplica a subsidios del gobierno (Mi Casa Ya / Cobertura FRECH).
-                </div>
-            </div>
+        <!-- Copyright -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-ocean-800 text-sm text-center">
+            <p>&copy; 2024 Inmobiliaria Puerta de Oro. Todos los derechos reservados.</p>
         </div>
-    </div>
+    </footer>
 
-    <script>
-        let tipoCreditoActivo = 'hipotecario';
-
-        function cambiarTipo(tipo) {
-            tipoCreditoActivo = tipo;
-            
-            // Actualizar botones de pestañas
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Modificar visibilidad y valores sugeridos según la modalidad colombiana estándar
-            const divCuotaInicial = document.getElementById('divCuotaInicial');
-            const divAmortizacion = document.getElementById('divAmortizacion');
-            const lblMonto = document.getElementById('lblMonto');
-            const lblPlazo = document.getElementById('lblPlazo');
-            
-            if (tipo === 'hipotecario') {
-                lblMonto.textContent = "Valor del Inmueble ($ COP)";
-                lblPlazo.textContent = "Plazo de Amortización (Meses)";
-                divCuotaInicial.style.display = 'block';
-                divAmortizacion.style.display = 'block';
-                document.getElementById('montoPrincipal').value = "150000000";
-                document.getElementById('cuotaInicial').value = "45000000";
-                document.getElementById('tasaAnual').value = "11.5";
-                document.getElementById('plazo').value = "240";
-                document.getElementById('seguroMes').value = "55000";
-                document.getElementById('infoDinamica').innerHTML = "<strong>Análisis del Sistema:</strong> Financiamiento máx del 70% para vivienda NO VIS y 80% para VIS. Estabilidad a largo plazo mediante cuotas fijas en pesos.";
-            } else if (tipo === 'vehiculo') {
-                lblMonto.textContent = "Monto a Financiar el Vehículo ($ COP)";
-                lblPlazo.textContent = "Plazo de Amortización (Meses)";
-                divCuotaInicial.style.display = 'none';
-                divAmortizacion.style.display = 'none';
-                document.getElementById('montoPrincipal').value = "60000000";
-                document.getElementById('tasaAnual').value = "15.5";
-                document.getElementById('plazo').value = "72";
-                document.getElementById('seguroMes').value = "80000"; // Incluye póliza auto todo riesgo endosada
-                document.getElementById('infoDinamica').innerHTML = "<strong>Análisis del Sistema:</strong> El crédito de vehículo suele exigir pignoración del automotor. Las tasas varían si el carro es nuevo o usado.";
-            } else if (tipo === 'libre') {
-                lblMonto.textContent = "Monto del Crédito de Consumo ($ COP)";
-                lblPlazo.textContent = "Plazo Solicitado (Meses)";
-                divCuotaInicial.style.display = 'none';
-                divAmortizacion.style.display = 'none';
-                document.getElementById('montoPrincipal').value = "20000000";
-                document.getElementById('tasaAnual').value = "22.0";
-                document.getElementById('plazo').value = "48";
-                document.getElementById('seguroMes').value = "15000";
-                document.getElementById('infoDinamica').innerHTML = "<strong>Análisis del Sistema:</strong> Libre inversión/Consumo. Tasas más elevadas sujetas al perfil de riesgo. Alerta con la tasa de usura fijada por la Superfinanciera.";
-            } else if (tipo === 'tarjeta') {
-                lblMonto.textContent = "Cupo Utilizado / Avance / Compra ($ COP)";
-                lblPlazo.textContent = "Diferido a Cuotas (Meses)";
-                divCuotaInicial.style.display = 'none';
-                divAmortizacion.style.display = 'none';
-                document.getElementById('montoPrincipal').value = "5000000";
-                document.getElementById('tasaAnual').value = "28.5"; // Cercano a la usura habitual de tarjetas
-                document.getElementById('plazo').value = "24";
-                document.getElementById('seguroMes').value = "6000"; // Seguro de cartera común
-                document.getElementById('infoDinamica').innerHTML = "<strong>Análisis del Sistema:</strong> Compras diferidas a 1 sola cuota por lo general no generan intereses corrientes en Colombia. Evite los avances en efectivo debido a su alto costo inmediato.";
-            }
-            
-            calcularTodo();
-        }
-
-        function calcularTodo() {
-            const montoPrincipal = parseFloat(document.getElementById('montoPrincipal').value) || 0;
-            const cuotaInicial = tipoCreditoActivo === 'hipotecario' ? (parseFloat(document.getElementById('cuotaInicial').value) || 0) : 0;
-            const tasaAnual = parseFloat(document.getElementById('tasaAnual').value) || 0;
-            const plazo = parseInt(document.getElementById('plazo').value) || 0;
-            const seguroMes = parseFloat(document.getElementById('seguroMes').value) || 0;
-
-            const capitalFinanciar = montoPrincipal - cuotaInicial;
-            document.getElementById('resFinanciar').textContent = '$ ' + capitalFinanciar.toLocaleString('es-CO');
-
-            if (capitalFinanciar <= 0 || plazo <= 0 || tasaAnual <= 0) {
-                document.getElementById('resCuotaBase').textContent = "$ 0";
-                document.getElementById('resCuotaTotal').textContent = "$ 0";
-                document.getElementById('resIntereses').textContent = "$ 0";
-                return;
-            }
-
-            // Convertir de Efectiva Anual (E.A) a Mensual Vencida (M.V)
-            const tasaMensual = Math.pow(1 + (tasaAnual / 100), 1 / 12) - 1;
-            document.getElementById('resTasaMes').textContent = (tasaMensual * 100).toFixed(2) + '%';
-
-            // Cálculo de la cuota base usando amortización constante (sistema francés)
-            const cuotaBase = (capitalFinanciar * tasaMensual) / (1 - Math.pow(1 + tasaMensual, -plazo));
-            const cuotaTotal = cuotaBase + seguroMes;
-            const totalIntereses = (cuotaBase * plazo) - capitalFinanciar;
-
-            document.getElementById('resCuotaBase').textContent = '$ ' + Math.round(cuotaBase).toLocaleString('es-CO');
-            document.getElementById('resSeguro').textContent = '$ ' + Math.round(seguroMes).toLocaleString('es-CO');
-            document.getElementById('resCuotaTotal').textContent = '$ ' + Math.round(cuotaTotal).toLocaleString('es-CO');
-            document.getElementById('resIntereses').textContent = '$ ' + Math.round(totalIntereses).toLocaleString('es-CO');
-        }
-
-        // Listener para recálculo dinámico en cualquier interacción
-        document.querySelectorAll('input, select').forEach(element => {
-            element.addEventListener('input', calcularTodo);
-        });
-
-        // Inicialización en la carga original
-        calcularTodo();
-    </script>
 </body>
 </html>
